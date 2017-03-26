@@ -12,10 +12,19 @@ module.exports = (env) => {
         stats: { modules: false },
         context: __dirname,
         resolve: { extensions: [ '.js', '.ts' ] },
-        entry: { 'main': './ClientApp/boot.ts' },
+        entry: { 'main': './ClientApp/main.js' },
         module: {
             rules: [
+                {
+                    test: /\.vue$/,
+                    loader: 'vue-loader'
+                },
                 { test: /\.vue\.html$/, include: /ClientApp/, loader: 'vue-loader', options: { loaders: { js: 'awesome-typescript-loader?silent=true' } } },
+                {
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/
+                },
                 { test: /\.ts$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
                 { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }

@@ -27,4 +27,20 @@
     </div>
 </template>
 
-<script src="./fetchdata.ts"></script>
+<script>
+export default {
+    data() {
+        return {
+            forecasts: []
+        };
+    },
+    
+    mounted() {
+        fetch('/api/SampleData/WeatherForecasts')
+            .then(response => response.json())
+            .then(data => {
+                this.forecasts = data;
+            });
+    }
+}
+</script>
