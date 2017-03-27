@@ -14,10 +14,16 @@
                         <router-link to="/" :exact="true">Home</router-link>
                     </li>
                     <li>
+                        <router-link to="/products" :exact="true">Products</router-link>
+                    </li>
+                    <li>
                         <router-link to="/counter">Counter</router-link>
                     </li>
                     <li>
                         <router-link to="/fetchdata">Fetch data</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/about">About</router-link>
                     </li>
                 </ul>
             </div>
